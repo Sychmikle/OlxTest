@@ -20,6 +20,11 @@ public class HomePage extends BasePage {
     @FindBy(id ="topLoginLink")
     public WebElement loginLink;
 
+    @FindBy(id ="headerSearch")
+    public WebElement headerSearch;
+    @FindBy(id ="submit-searchmain")
+    public WebElement searcButton;
+
     public AnimalAllAddsPage clickSubcatSeeAllAnimalAddsButton() {
         subcategoriesSeeAllAnimalAddsButton.click();
         return createPage(AnimalAllAddsPage.class);
@@ -31,6 +36,11 @@ public class HomePage extends BasePage {
     public LogRegTablePage clickLoginLink(){
         loginLink.click();
         return createPage(LogRegTablePage.class);
+    }
+    public SearchResultPage clickSearch(){
+        searcButton.click();
+        return createPage(SearchResultPage.class);
+
     }
 
 

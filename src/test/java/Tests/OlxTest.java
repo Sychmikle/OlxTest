@@ -2,11 +2,16 @@ package Tests;
 import Pages.AnimalAllAddsPage;
 import Pages.HomePage;
 import Pages.LogRegTablePage;
+import Pages.SearchResultPage;
+import Utils.ReadFrom;
 import org.junit.Assert;
 import org.junit.Test;
+import java.io.FileNotFoundException;
 
 
 public class OlxTest extends BaseTest{
+    ReadFrom readFrom = new ReadFrom();
+
 
     @Test
     public void allAdAnimals(){
@@ -38,6 +43,14 @@ public class OlxTest extends BaseTest{
         logPage.logCheckbox.click();
         logPage.logButton.click();
         Assert.assertTrue(driver.getCurrentUrl().contains("https://www.olx.ua/myaccount/#login"));
+    }
+
+    @Test
+    public void someProductSearch() throws FileNotFoundException {
+        HomePage homePage = page.createPage(HomePage.class);
+        homePage.headerSearch.sendKeys(readFrom.someProduct());
+        SearchResultPage searchResultPage = homePage.clickSearch();
+        Assert.assertTrue(searchResultPage.allAdsList.size()==39);
     }
 
 
