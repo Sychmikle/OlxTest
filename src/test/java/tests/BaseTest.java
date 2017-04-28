@@ -1,6 +1,6 @@
-package Tests;
+package tests;
 
-import Pages.BasePage;
+import pages.BasePage;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;

@@ -1,16 +1,19 @@
-package Tests;
-import Pages.AnimalAllAddsPage;
-import Pages.HomePage;
-import Pages.LogRegTablePage;
-import Pages.SearchResultPage;
-import Utils.ReadFrom;
+package tests;
+import pages.AnimalAllAddsPage;
+import pages.HomePage;
+import pages.LogRegTablePage;
+import pages.SearchResultPage;
+import utils.MakeScreenShot;
+import utils.ReadFrom;
 import org.junit.Assert;
 import org.junit.Test;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 
 public class OlxTest extends BaseTest{
     ReadFrom readFrom = new ReadFrom();
+    MakeScreenShot screenShot = new MakeScreenShot();
 
 
     @Test
@@ -46,11 +49,12 @@ public class OlxTest extends BaseTest{
     }
 
     @Test
-    public void someProductSearch() throws FileNotFoundException {
+    public void someProductSearch() throws IOException {
         HomePage homePage = page.createPage(HomePage.class);
         homePage.headerSearch.sendKeys(readFrom.someProduct());
         SearchResultPage searchResultPage = homePage.clickSearch();
         Assert.assertTrue(searchResultPage.allAdsList.size()==39);
+        screenShot.shoot();
     }
 
 

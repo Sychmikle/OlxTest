@@ -1,4 +1,5 @@
-package Utils;
+package utils;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.Scanner;
 
 public class ReadFrom {
     static ArrayList <String> result = new ArrayList<>();
-    final static Random random = new Random();
+    static Random random = new Random();
 
     public String someProduct() throws FileNotFoundException {
         File file = new File("Resources.txt");
@@ -17,7 +18,6 @@ public class ReadFrom {
         while (scanner.hasNextLine()){result.add(scanner.nextLine());}
         int x = result.size();
         return result.get(random.nextInt(x));
-
     }
 
 }
