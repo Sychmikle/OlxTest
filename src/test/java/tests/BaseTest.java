@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import pages.HomePage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,6 +14,7 @@ public class BaseTest {
     protected static String baseUrl = "https://www.olx.ua/";
     protected BasePage page;
     protected static WebDriver driver;
+    protected HomePage homePage;
 
     @BeforeClass
     public static void beforeClass() {
@@ -23,6 +25,8 @@ public class BaseTest {
     public void before() {
         page = new BasePage(driver);
         open(baseUrl);
+        homePage = page.createPage(HomePage.class);
+
     }
 
     @AfterClass
@@ -36,9 +40,9 @@ public class BaseTest {
         driver.manage().window().maximize();
     }
 
-    public BasePage open(String url) {
+    public void open(String url) {
         driver.get(url);
-        return new BasePage(driver);
+
     }
 
 
