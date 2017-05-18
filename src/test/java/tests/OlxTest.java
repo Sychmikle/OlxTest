@@ -1,13 +1,11 @@
 package tests;
 import pages.AnimalAllAddsPage;
-import pages.HomePage;
 import pages.LogRegTablePage;
 import pages.SearchResultPage;
 import utils.MakeScreenShot;
 import utils.ReadFrom;
 import org.junit.Assert;
 import org.junit.Test;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -18,7 +16,6 @@ public class OlxTest extends BaseTest{
 
     @Test
     public void allAdAnimals(){
-        HomePage homePage = page.createPage(HomePage.class);
         homePage.animalButton.click();
         AnimalAllAddsPage animalAllAddsPage = homePage.clickSubcatSeeAllAnimalAddsButton();
         Assert.assertTrue(animalAllAddsPage.allAdsList.size() == 39);
@@ -26,7 +23,6 @@ public class OlxTest extends BaseTest{
 
     @Test
     public void registrationTest(){
-        HomePage homePage = page.createPage(HomePage.class);
         LogRegTablePage regPage = homePage.clickPostNewAdLink();
         regPage.clickRegisterButton();
         regPage.userEmailRegister.sendKeys("testaccforolx@gmail.com");
@@ -39,7 +35,6 @@ public class OlxTest extends BaseTest{
 
     @Test
     public void logInTest(){
-        HomePage homePage = page.createPage(HomePage.class);
         LogRegTablePage logPage = homePage.clickLoginLink();
         logPage.userEmail.sendKeys("testaccforolx@gmail.com");
         logPage.userPass.sendKeys("qwerty");
@@ -50,7 +45,6 @@ public class OlxTest extends BaseTest{
 
     @Test
     public void someProductSearch() throws IOException {
-        HomePage homePage = page.createPage(HomePage.class);
         homePage.headerSearch.sendKeys(readFrom.someProduct());
         SearchResultPage searchResultPage = homePage.clickSearch();
         Assert.assertTrue(searchResultPage.allAdsList.size()==39);
